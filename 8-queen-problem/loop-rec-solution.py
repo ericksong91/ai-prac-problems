@@ -96,7 +96,6 @@ loopSolutionForEight(numQueens)
 solutions = []
 numQueens = 8
 currentSolution = [0 for x in range(numQueens)]
-row = 0
 
 # Store current solutions with key as array
 # if solution is already known, skip?
@@ -104,16 +103,20 @@ row = 0
 def recursiveSolution(numQueens, curRow):
     # so each pass, should start at the row, then check each column
     for queenCol in range(numQueens):
+        # once again checks if its viable
         if not isSafe(curRow, queenCol):
             continue
         else:
+            # if viable, it adds it to the currentSoln
             currentSolution[curRow] = queenCol
             if curRow == numQueens - 1:
+                # if viable AND its the last row, it appends the solution to the solutions list
                 solutions.append(currentSolution.copy())
             else:
+                # if viable AND its not on the last row, it goes to the next row
                 recursiveSolution(numQueens, curRow + 1)
 
-recursiveSolution(numQueens, row)
+recursiveSolution(numQueens, 0)
 
 print(len(solutions)," solutions found.")
 
