@@ -3,10 +3,8 @@
 
 numQueens = 8
 
-currentSolution = [0 for x in range( numQueens )] # initialize list with 8 0s to represent spaces in the solution
+currentSolution = [0 for x in range(numQueens)] # initialize list with 8 0s to represent spaces in the solution
 solutions = [] # once currentSolution is filled, append into solutions list
-
-print(currentSolution)
 
 # helper method that figures out if a position is safe on the current row
 
@@ -28,10 +26,11 @@ def isSafe(testRow, testCol):
             # it is diagonal
             return False
         
-        return True
+    return True
     
     # Loop, "Bad Solution"
 
+def loopSolutionForEight(numQueens):
     for queen0 in range(numQueens):
         if not isSafe(0, queen0):
             # uses helper method to check current row and column
@@ -89,3 +88,8 @@ def isSafe(testRow, testCol):
     print(len(solutions)," solutions found.")
     for solution in solutions:
         print(solution)
+
+loopSolutionForEight(numQueens)
+# try recursive solution
+    
+
